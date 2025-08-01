@@ -70,3 +70,11 @@ class DevicePresence(Base):
     device_id = Column(String, nullable=False)
     present = Column(Boolean, nullable=False)
     timestamp = Column(String)  # oppure DateTime
+
+# -------------------------------
+# ROOMS (se non già presente)
+# -------------------------------
+class RoomType(Base):
+    __tablename__ = "room_types"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False, unique=True)
