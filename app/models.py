@@ -59,3 +59,14 @@ class Building(Base):
     longitude = Column(Float, nullable=False)
     building_type = Column(String, nullable=False)  # es: RESIDENZIALE, PUBBLICO, ...
     group_id = Column(String, nullable=False, default="SB")  # SB = Single Building. edificio non in gruppo
+
+# -------------------------------
+# DEVICES (se non già presente)
+# -------------------------------
+class DevicePresence(Base):
+    __tablename__ = "device_presence"
+    id = Column(Integer, primary_key=True, index=True)
+    room_id = Column(Integer, ForeignKey("rooms.id"), nullable=False)
+    device_id = Column(String, nullable=False)
+    present = Column(Boolean, nullable=False)
+    timestamp = Column(String)  # oppure DateTime
