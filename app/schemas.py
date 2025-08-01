@@ -115,3 +115,18 @@ class EnvironmentalParameterSchema(EnvironmentalParameterCreateSchema):
     model_config = {
         "from_attributes": True
     }
+# -------------------------------
+# DEVICE PRESENCE
+# -------------------------------
+class DevicePresenceCreateSchema(BaseModel):
+    room_id: int
+    device_id: str  # es: MAC address, UUID BLE, etc.
+    present: bool
+    timestamp: Optional[str] = None  # o datetime
+
+class DevicePresenceSchema(DevicePresenceCreateSchema):
+    id: int
+
+    model_config = {
+        "from_attributes": True
+    }
