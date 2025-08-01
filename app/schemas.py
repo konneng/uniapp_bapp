@@ -142,3 +142,15 @@ class ZoneTypeSchema(ZoneTypeCreateSchema):
     model_config = {
         "from_attributes": True
     }
+# -------------------------------
+# ROOM TYPE
+# -------------------------------
+class RoomTypeCreateSchema(BaseModel):
+    name: str
+
+class RoomTypeSchema(RoomTypeCreateSchema):
+    id: int
+
+    model_config = {
+        "from_attributes": True
+    }
