@@ -87,6 +87,15 @@ class Room(Base):
     zone_id = Column(String, ForeignKey("zones.id"), nullable=False)
 
 # -------------------------------
+# ZONES (se non già presente)
+# -------------------------------
+class Zone(Base):
+    __tablename__ = "zones"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    building_id = Column(String, ForeignKey("buildings.id"), nullable=False)
+
+# -------------------------------
 # USERS (se non già presente)
 # -------------------------------
 class User(Base):
