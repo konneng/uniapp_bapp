@@ -130,3 +130,15 @@ class DevicePresenceSchema(DevicePresenceCreateSchema):
     model_config = {
         "from_attributes": True
     }
+# -------------------------------
+# ZONE TYPE
+# -------------------------------
+class ZoneTypeCreateSchema(BaseModel):
+    name: str
+
+class ZoneTypeSchema(ZoneTypeCreateSchema):
+    id: int
+
+    model_config = {
+        "from_attributes": True
+    }
