@@ -73,7 +73,7 @@ class BuildingSchema(BuildingCreateSchema):
 # ZONES
 # -------------------------------
 class ZoneCreateSchema(BaseModel):
-    id: int
+    id: str
     name: str
     building_id: str
 
@@ -85,11 +85,11 @@ class ZoneSchema(ZoneCreateSchema):
 # ROOMS
 # -------------------------------
 class RoomCreateSchema(BaseModel):
-    id: int
     name: str
     zone_id: int
 
 class RoomSchema(RoomCreateSchema):
+    id: int
     model_config = {"from_attributes": True}
 
 
@@ -101,7 +101,7 @@ class EnvironmentalParameterCreateSchema(BaseModel):
     temperature: float
     humidity: float
     air_quality: Optional[str] = None
-    timestamp: Optional[datetime] = None
+    timestamp: Optional[str] = None
 
 class EnvironmentalParameterSchema(EnvironmentalParameterCreateSchema):
     id: int
@@ -115,6 +115,7 @@ class DevicePresenceCreateSchema(BaseModel):
     room_id: int
     device_id: str
     present: bool
+    from datetime import datetime
     timestamp: Optional[datetime] = None
 
 class DevicePresenceSchema(DevicePresenceCreateSchema):
