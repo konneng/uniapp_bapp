@@ -99,3 +99,19 @@ class RoomSchema(RoomCreateSchema):
     model_config = {
         "from_attributes": True
     }
+# -------------------------------
+# ENVIRONMENTAL PARAMETERS
+# -------------------------------
+class EnvironmentalParameterCreateSchema(BaseModel):
+    room_id: int
+    temperature: float
+    humidity: float
+    air_quality: Optional[str] = None
+    timestamp: Optional[str] = None  # puoi usare datetime se preferisci
+
+class EnvironmentalParameterSchema(EnvironmentalParameterCreateSchema):
+    id: int
+
+    model_config = {
+        "from_attributes": True
+    }
