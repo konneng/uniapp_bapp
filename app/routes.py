@@ -44,7 +44,7 @@ def get_rooms(db: Session = Depends(get_db)):
     return db.query(models.Room).all()
 
 # --- POINTS OF INTEREST ---
-@router.post("/points-of-interest", response_model=schemas.POISchema)
+@router.post("/points-of-interest", response_model=schemas.PointOfInterestSchema)
 def create_poi(poi: schemas.POICreateSchema, db: Session = Depends(get_db)):
     db_poi = models.PointOfInterest(**poi.dict())
     db.add(db_poi)
@@ -52,7 +52,7 @@ def create_poi(poi: schemas.POICreateSchema, db: Session = Depends(get_db)):
     db.refresh(db_poi)
     return db_poi
 
-@router.get("/points-of-interest", response_model=list[schemas.POISchema])
+@router.get("/points-of-interest", response_model=list[schemas.PointOfInterestSchema])
 def get_pois(db: Session = Depends(get_db)):
     return db.query(models.PointOfInterest).all()
 
