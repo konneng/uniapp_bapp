@@ -81,10 +81,13 @@ class RoomType(Base):
 
 class Room(Base):
     __tablename__ = "rooms"
-
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
-    zone_id = Column(String, ForeignKey("zones.id"), nullable=False)
+    zone_id = Column(Integer, ForeignKey("zones.id"), nullable=False)
+    room_type_id = Column(Integer, ForeignKey("room_types.id"), nullable=True)
+
+    zone = relationship("Zone")
+    room_type = relationship("RoomType")
 
 # -------------------------------
 # ZONES (se non già presente)
