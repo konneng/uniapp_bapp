@@ -2,6 +2,9 @@
 from pydantic import BaseModel
 from typing import Optional
 
+# -------------------------------
+# PROTOCOLS
+# -------------------------------
 class ProtocolBase(BaseModel):
     name: str
     description: Optional[str] = None
@@ -11,9 +14,14 @@ class ProtocolCreateSchema(ProtocolBase):
 
 class ProtocolSchema(ProtocolBase):
     id: int
-    class Config:
-        orm_mode = True
 
+    model_config = {
+        "from_attributes": True
+    }
+
+# -------------------------------
+# OBJECTS OF INTEREST
+# -------------------------------
 class ObjectOfInterestCreateSchema(BaseModel):
     name: str
     type: str
@@ -26,9 +34,14 @@ class ObjectOfInterestCreateSchema(BaseModel):
 
 class ObjectOfInterestSchema(ObjectOfInterestCreateSchema):
     id: int
-    class Config:
-        orm_mode = True
 
+    model_config = {
+        "from_attributes": True
+    }
+
+# -------------------------------
+# POINTS OF INTEREST
+# -------------------------------
 class PointOfInterestCreateSchema(BaseModel):
     name: str
     type: str
@@ -38,5 +51,26 @@ class PointOfInterestCreateSchema(BaseModel):
 
 class PointOfInterestSchema(PointOfInterestCreateSchema):
     id: int
-    class Config:
-        orm_mode = True
+
+    model_config = {
+        "from_attributes": True
+    }
+
+# -------------------------------
+# BUILDINGS
+# -------------------------------
+class BuildingCreateSchema(BaseModel):
+    id: str
+    country: str
+    province: str
+    name: str
+    address: str
+    latitude: float
+    longitude: float
+    building_type: str
+    group_id: str
+
+class BuildingSchema(BuildingCreateSchema):
+    model_config = {
+        "from_attributes": True
+    }
