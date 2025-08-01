@@ -74,3 +74,28 @@ class BuildingSchema(BuildingCreateSchema):
     model_config = {
         "from_attributes": True
     }
+# -------------------------------
+# ZONES
+# -------------------------------
+class ZoneCreateSchema(BaseModel):
+    id: str
+    name: str
+    building_id: str
+
+class ZoneSchema(ZoneCreateSchema):
+    model_config = {
+        "from_attributes": True
+    }
+
+# -------------------------------
+# ROOMS
+# -------------------------------
+class RoomCreateSchema(BaseModel):
+    id: str
+    name: str
+    zone_id: str
+
+class RoomSchema(RoomCreateSchema):
+    model_config = {
+        "from_attributes": True
+    }
