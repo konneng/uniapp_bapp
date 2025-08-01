@@ -57,7 +57,7 @@ def get_pois(db: Session = Depends(get_db)):
     return db.query(models.PointOfInterest).all()
 
 # --- ENVIRONMENTAL PARAMETERS ---
-@router.post("/environmental-parameters", response_model=schemas.EnvParamSchema)
+@router.post("/environmental-parameters", response_model=schemas.EnvironmentalParameterSchema)
 def create_env_param(param: schemas.EnvParamCreateSchema, db: Session = Depends(get_db)):
     db_param = models.EnvironmentalParameter(**param.dict())
     db.add(db_param)
@@ -65,7 +65,7 @@ def create_env_param(param: schemas.EnvParamCreateSchema, db: Session = Depends(
     db.refresh(db_param)
     return db_param
 
-@router.get("/environmental-parameters", response_model=list[schemas.EnvParamSchema])
+@router.get("/environmental-parameters", response_model=list[schemas.EnvironmentalParameterSchem])
 def get_env_params(db: Session = Depends(get_db)):
     return db.query(models.EnvironmentalParameter).all()
 
