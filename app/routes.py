@@ -45,7 +45,7 @@ def get_rooms(db: Session = Depends(get_db)):
 
 # --- POINTS OF INTEREST ---
 @router.post("/points-of-interest", response_model=schemas.PointOfInterestSchema)
-def create_poi(poi: schemas.POICreateSchema, db: Session = Depends(get_db)):
+def create_poi(poi: schemas.PointOfInterestCreateSchema, db: Session = Depends(get_db)):
     db_poi = models.PointOfInterest(**poi.dict())
     db.add(db_poi)
     db.commit()
