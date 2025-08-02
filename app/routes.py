@@ -107,3 +107,16 @@ def create_room_type(room_type: schemas.RoomTypeCreateSchema, db: Session = Depe
 @router.get("/room-types", response_model=list[schemas.RoomTypeSchema])
 def get_room_types(db: Session = Depends(get_db)):
     return db.query(models.RoomType).all()
+
+# --- ENVIRONMENTAL PARAMETERS ---
+@router.post("/environmental-parameters", response_model=schemas.EnvironmentalParameterSchema)
+def create_env_param(param: schemas.EnvironmentalParameterCreateSchema, db: Session = Depends(get_db)):
+    db_param = models.EnvironmentalParameter(**param.dict())
+    db.add(db_param)
+    db.commit()
+    db.refresh(db_param)
+    return db_param
+
+@router.get("/environmental-parameters", response_model=list[schemas.EnvironmentalParameterSchema])
+def get_env_params(db: Session = Depends(get_db)):
+    return db.query(models.EnvironmentalParameter).all()
