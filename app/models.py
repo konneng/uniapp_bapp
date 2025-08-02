@@ -110,3 +110,16 @@ class User(Base):
     hashed_password = Column(String, nullable=True)
     full_name = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
+
+# -------------------------------
+# ENVIRONMENTAL PARAMETERS
+# -------------------------------
+class EnvironmentalParameter(Base):
+    __tablename__ = "environmental_parameters"
+
+    id = Column(Integer, primary_key=True, index=True)
+    room_id = Column(Integer, ForeignKey("rooms.id"), nullable=False)
+    temperature = Column(Float, nullable=False)
+    humidity = Column(Float, nullable=False)
+    air_quality = Column(String, nullable=True)
+    timestamp = Column(String)  # puoi usare DateTime se vuoi
