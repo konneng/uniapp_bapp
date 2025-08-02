@@ -115,7 +115,6 @@ class DevicePresenceCreateSchema(BaseModel):
     room_id: int
     device_id: str
     present: bool
-    from datetime import datetime
     timestamp: Optional[datetime] = None
 
 class DevicePresenceSchema(DevicePresenceCreateSchema):
