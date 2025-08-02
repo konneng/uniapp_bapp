@@ -101,7 +101,7 @@ class EnvironmentalParameterCreateSchema(BaseModel):
     temperature: float
     humidity: float
     air_quality: Optional[str] = None
-    timestamp: Optional[str] = None
+    timestamp: Optional[datetime] = None
 
 class EnvironmentalParameterSchema(EnvironmentalParameterCreateSchema):
     id: int
