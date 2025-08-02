@@ -122,4 +122,4 @@ class EnvironmentalParameter(Base):
     temperature = Column(Float, nullable=False)
     humidity = Column(Float, nullable=False)
     air_quality = Column(String, nullable=True)
-    timestamp = Column(String)  # puoi usare DateTime se vuoi
+    timestamp = Column(DateTime, default=datetime.utcnow)
