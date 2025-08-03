@@ -112,7 +112,7 @@ class User(Base):
     hashed_password = Column(String, nullable=True)
     full_name = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
-    status = Column(String, default="attivo")  # attivo, disattivo, sospeso, quarantena
+    status_id = Column(Integer, ForeignKey("user_status.id"), nullable=False)
     signup_date = Column(DateTime, default=datetime.utcnow)
     accepted_terms = Column(Boolean, default=False)
 
