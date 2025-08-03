@@ -16,8 +16,9 @@ def create_building(building: schemas.BuildingSchema, db: Session = Depends(get_
 
 @router.get("/buildings", response_model=list[schemas.BuildingSchema])
 def get_buildings(db: Session = Depends(get_db)):
+    print("📥 Richiesta ricevuta su /buildings")  # <-- LOG DI DEBUG
     buildings = db.query(models.Building).all()
-    print("✅ BUILDINGS:", buildings)  # stampa debug
+    print(f"📤 Restituiti {len(buildings)} edifici")
     return buildings
 
 # --- ZONES ---
