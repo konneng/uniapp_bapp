@@ -11,10 +11,11 @@ models.Base.metadata.create_all(bind=database.engine)
 app = FastAPI()
 
 # ✅ Middleware CORS per abilitare il frontend React a connettersi
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # oppure ["*"] per sviluppo libero
-    allow_credentials=True,
+    allow_origins=["*"],  # <-- accetta tutte le origini
+    allow_credentials=False,  # <-- importante!
     allow_methods=["*"],
     allow_headers=["*"],
 )
