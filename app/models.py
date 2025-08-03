@@ -95,7 +95,7 @@ class Room(Base):
 # -------------------------------
 class Zone(Base):
     __tablename__ = "zones"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(String, primary_key=True, index=True)  # <--- da Integer a String
     name = Column(String, nullable=False)
     building_id = Column(String, ForeignKey("buildings.id"), nullable=False)
 
