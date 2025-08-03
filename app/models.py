@@ -128,3 +128,13 @@ class EnvironmentalParameter(Base):
     humidity = Column(Float, nullable=False)
     air_quality = Column(String, nullable=True)
     timestamp = Column(DateTime, default=datetime.utcnow)
+
+# -------------------------------
+# USER STATUS
+# -------------------------------
+class UserStatus(Base):
+    __tablename__ = "user_status"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False, unique=True)  # es: attivo, sospeso, ecc.
+    description = Column(String, nullable=True)
