@@ -52,8 +52,8 @@ class PointOfInterest(Base):
 class Building(Base):
     __tablename__ = "buildings"
     id = Column(String, primary_key=True, index=True)  # es: BUI_IT_MI000000001
-    country = Column(String, nullable=False)
-    province = Column(String, nullable=False)
+    country_code = Column(String, nullable=False)
+    province_code = Column(String, nullable=False)
     name = Column(String, nullable=False)
     address = Column(String, nullable=False)
     latitude = Column(Float, nullable=False)
