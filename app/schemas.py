@@ -56,8 +56,8 @@ class PointOfInterestSchema(PointOfInterestCreateSchema):
 # -------------------------------
 class BuildingCreateSchema(BaseModel):
     id: str
-    country: str
-    province: str
+    country_code: str
+    province_code: str
     name: str
     address: str
     latitude: float
