@@ -142,3 +142,21 @@ class RoomTypeCreateSchema(BaseModel):
 class RoomTypeSchema(RoomTypeCreateSchema):
     id: int
     model_config = {"from_attributes": True}
+
+# -------------------------------
+#  USER 
+# -------------------------------
+class UserCreateSchema(BaseModel):
+    username: str
+    email: Optional[str]
+    phone: Optional[str]
+    full_name: Optional[str]
+    hashed_password: Optional[str]
+    status: Optional[str] = "attivo"
+    accepted_terms: Optional[bool] = False
+
+class UserSchema(UserCreateSchema):
+    id: int
+    signup_date: datetime
+
+    model_config = {"from_attributes": True}
