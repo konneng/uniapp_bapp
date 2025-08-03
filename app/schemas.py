@@ -63,7 +63,7 @@ class BuildingCreateSchema(BaseModel):
     latitude: float
     longitude: float
     building_type: str
-    group_id: str
+    group_id: Optional[str] = "SB"  # o = None
 
 class BuildingSchema(BuildingCreateSchema):
     class Config:
