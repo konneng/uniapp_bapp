@@ -116,6 +116,9 @@ class User(Base):
     signup_date = Column(DateTime, default=datetime.utcnow)
     accepted_terms = Column(Boolean, default=False)
 
+    # Relationship
+    status = relationship("UserStatus")
+
 # -------------------------------
 # ENVIRONMENTAL PARAMETERS
 # -------------------------------
