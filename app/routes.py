@@ -120,3 +120,16 @@ def create_ooi(ooi: schemas.ObjectOfInterestCreateSchema, db: Session = Depends(
 @router.get("/objects-of-interest", response_model=list[schemas.ObjectOfInterestSchema])
 def get_ooi(db: Session = Depends(get_db)):
     return db.query(models.ObjectOfInterest).all()
+
+# --- USERS ---
+@router.post("/users", response_model=schemas.UserSchema)
+def create_user(user: schemas.UserCreateSchema, db: Session = Depends(get_db)):
+    db_user = models.User(**user.dict())
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
+@router.get("/users", response_model=list[schemas.UserSchema])
+def get_users(db: Session = Depends(get_db)):
+    return db.query(models.User).all()
