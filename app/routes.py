@@ -36,7 +36,9 @@ def create_zone(zone: schemas.ZoneCreateSchema, db: Session = Depends(get_db)):
 
 @router.get("/zones", response_model=list[schemas.ZoneSchema])
 def get_zones(db: Session = Depends(get_db)):
-    return db.query(models.Zone).all()
+    zones = db.query(models.Zone).all()
+    print("ZONES:", zones)
+    return zones
 
 # --- ROOMS ---
 @router.post("/rooms", response_model=schemas.RoomSchema)
