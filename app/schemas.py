@@ -66,7 +66,8 @@ class BuildingCreateSchema(BaseModel):
     group_id: str
 
 class BuildingSchema(BuildingCreateSchema):
-    model_config = {"from_attributes": True}
+    class Config:
+        orm_mode = True
 
 
 # -------------------------------
