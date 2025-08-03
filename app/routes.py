@@ -8,10 +8,11 @@ router = APIRouter()
 # --- BUILDINGS ---
 @router.post("/buildings", response_model=schemas.BuildingSchema)
 def create_building(building: schemas.BuildingSchema, db: Session = Depends(get_db)):
-    db.add(models.Building(**building.dict()))
+    db_building = models.Building(**building.dict())
+    db.add(db_building)
     db.commit()
-    db.refresh(building)
-    return building
+    db.refresh(db_building)
+    return db_building  # ✅ restituisci l’oggetto SQLAlchemy aggiornato
 
 @router.get("/buildings", response_model=list[schemas.BuildingSchema])
 def get_buildings(db: Session = Depends(get_db)):
