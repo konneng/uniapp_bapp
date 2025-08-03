@@ -108,9 +108,13 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=True, nullable=False)
     email = Column(String, unique=True, nullable=True)
+    phone = Column(String, nullable=False)  # ✅ nuovo campo
     hashed_password = Column(String, nullable=True)
     full_name = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
+    status = Column(String, default="attivo")  # attivo, disattivo, sospeso, quarantena
+    signup_date = Column(DateTime, default=datetime.utcnow)
+    accepted_terms = Column(Boolean, default=False)
 
 # -------------------------------
 # ENVIRONMENTAL PARAMETERS
