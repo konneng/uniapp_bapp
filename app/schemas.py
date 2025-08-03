@@ -146,13 +146,20 @@ class RoomTypeSchema(RoomTypeCreateSchema):
 # -------------------------------
 #  USER 
 # -------------------------------
+class UserStatusSchema(BaseModel):
+    id: int
+    name: str
+    description: Optional[str] = None
+
+    model_config = {"from_attributes": True}
+    
 class UserCreateSchema(BaseModel):
     username: str
     email: Optional[str]
     phone: Optional[str]
     full_name: Optional[str]
     hashed_password: Optional[str]
-    status: Optional[str] = "attivo"
+    status_id: int
     accepted_terms: Optional[bool] = False
 
 class UserSchema(UserCreateSchema):
